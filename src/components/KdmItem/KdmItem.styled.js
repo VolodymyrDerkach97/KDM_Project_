@@ -1,7 +1,7 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 export const WrapperItem = styled.div`
-  min-width: 400px;
+  min-width: 350px;
   padding: 10px;
 
   background-color: #ffffff;
@@ -11,11 +11,11 @@ export const WrapperItem = styled.div`
 
   box-shadow: 0px 10px 13px -7px #000000;
 
-  font-size: 20px;
+  font-size: 18px;
 `;
 
 export const Name = styled.p`
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 700;
   text-align: center;
 `;
@@ -30,6 +30,7 @@ export const WrapperButton = styled.div`
 `;
 
 export const UpdateDate = styled.p`
+  margin-left: auto;
   color: #a2a2a2;
   font-size: 15px;
 `;

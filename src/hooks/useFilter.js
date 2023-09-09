@@ -1,9 +1,9 @@
-const { filterStatus, daysRemaining } = require('utils');
-const { useKdm } = require('./useKdm');
+const { filterStatus, daysRemaining } = require("utils");
+const { useKdm } = require("./useKdm");
 
-export const useFilter = filter => {
+export const useFilter = (filter) => {
   const { listKdm } = useKdm();
-  console.log('filter', filter);
+
   let list;
   switch (filter) {
     case filterStatus.all:
@@ -11,7 +11,7 @@ export const useFilter = filter => {
       break;
 
     case filterStatus.dedline:
-      list = listKdm.filter(item => {
+      list = listKdm.filter((item) => {
         return daysRemaining(item.timeEnd);
       });
       break;
