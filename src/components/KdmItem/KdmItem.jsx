@@ -59,7 +59,15 @@ const KdmItem = (kdmData) => {
         )}
 
         <UpdateDate>{formatDate(kdmData.updatedAt)}</UpdateDate>
-        {dedline ? <IoIosNotifications fill="red" size={25} /> : ""}
+        {dedline ? (
+          <IoIosNotifications
+            fill="#FC5151"
+            size={25}
+            style={{ position: "absolute", top: "10px", right: "10px" }}
+          />
+        ) : (
+          ""
+        )}
       </WrapperFooter>
 
       {showModal && (

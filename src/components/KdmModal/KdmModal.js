@@ -1,34 +1,34 @@
-import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 
-import { createPortal } from 'react-dom';
+import { createPortal } from "react-dom";
 import {
   Overlay,
   ModalStyled,
   InputWrapper,
   InputStyled,
-} from './KdmModal.styled';
-import { nanoid } from 'nanoid';
+} from "./KdmModal.styled";
+import { nanoid } from "nanoid";
 
-import { useKdm } from 'hooks/useKdm';
+import { useKdm } from "hooks/useKdm";
 
-const portalModal = document.querySelector('#modal-root');
+const portalModal = document.querySelector("#modal-root");
 
-const KdmModal = ({ onClose, type, kdmData = '' }) => {
-  const [name, setName] = useState(kdmData.name || '');
-  const [timeStart, setTimeStart] = useState(kdmData.timeStart || '');
-  const [timeEnd, setTimeEnd] = useState(kdmData.timeEnd || '');
-  const [hall, setHall] = useState(kdmData.hall || '');
+const KdmModal = ({ onClose, type, kdmData = "" }) => {
+  const [name, setName] = useState(kdmData.name || "");
+  const [timeStart, setTimeStart] = useState(kdmData.timeStart || "");
+  const [timeEnd, setTimeEnd] = useState(kdmData.timeEnd || "");
+  const [hall, setHall] = useState(kdmData.hall || "");
 
   const { add, update } = useKdm();
 
-  const onSubmitContact = async e => {
+  const onSubmitContact = async (e) => {
     e.preventDefault();
     switch (type) {
-      case 'add':
+      case "add":
         await add({ name, timeStart, timeEnd, hall });
         break;
-      case 'update':
+      case "update":
         await update({ id: kdmData._id, name, timeStart, timeEnd, hall });
         break;
 
@@ -37,41 +37,41 @@ const KdmModal = ({ onClose, type, kdmData = '' }) => {
     }
 
     reset();
-    onClose();
+    onClose("kdm");
   };
 
   const reset = () => {
-    setName('');
-    setTimeStart('');
-    setTimeEnd('');
+    setName("");
+    setTimeStart("");
+    setTimeEnd("");
   };
-  const onCloseOverlay = e => {
+  const onCloseOverlay = (e) => {
     if (e.currentTarget === e.target) {
-      onClose();
+      onClose("kdm");
     }
   };
 
   useEffect(() => {
-    const onCloseKey = e => {
-      if (e.code === 'Escape') {
-        onClose();
+    const onCloseKey = (e) => {
+      if (e.code === "Escape") {
+        onClose("kdm");
       }
     };
-    window.addEventListener('keydown', onCloseKey);
-    return () => window.removeEventListener('keydown', onCloseKey);
+    window.addEventListener("keydown", onCloseKey);
+    return () => window.removeEventListener("keydown", onCloseKey);
   }, [onClose]);
 
   const nameInputId = nanoid();
   const timeStartInputId = nanoid();
   const timeEndInputId = nanoid();
 
-  let textButton = '';
+  let textButton = "";
   switch (type) {
-    case 'add':
-      textButton = 'Додати ключ';
+    case "add":
+      textButton = "Додати ключ";
       break;
-    case 'update':
-      textButton = 'Оновити ключ';
+    case "update":
+      textButton = "Оновити ключ";
       break;
 
     default:

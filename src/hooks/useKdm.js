@@ -23,7 +23,7 @@ export const KdmProvider = ({ children }) => {
     const refreshUser = async () => {
       const res = await currentUser();
 
-      if (res === undefined || res.status !== 200) {
+      if (!res || res.status !== 200) {
         console.log("NO LOGIN USER");
         setInAuth(false);
         return;
@@ -40,11 +40,15 @@ export const KdmProvider = ({ children }) => {
     refreshKdm();
   }, []);
 
-  const onLogin = async () => {
-    const res = await login({ email: "kdm@gmail.com", password: "kdm123321" });
-
+  const onLogin = async (data) => {
+    const res = await login(data);
+    // const res = await login({ email: "kdm@gmail.com", password: "kdm123321" });
+    if (!res) {
+      console.error("Error login");
+      return;
+    }
     if (res.code !== 200) {
-      console.log("NO LOGIN");
+      console.error("NO LOGIN");
       setInAuth(false);
       return;
     }

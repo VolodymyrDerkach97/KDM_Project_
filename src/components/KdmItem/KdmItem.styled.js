@@ -1,8 +1,10 @@
 import styled from "@emotion/styled";
 
 export const WrapperItem = styled.div`
-  min-width: 350px;
+  position: relative;
   padding: 10px;
+  min-height: 100px;
+  min-width: 350px;
 
   background-color: #ffffff;
 
@@ -30,6 +32,9 @@ export const WrapperButton = styled.div`
 `;
 
 export const UpdateDate = styled.p`
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
   margin-left: auto;
   color: #a2a2a2;
   font-size: 15px;
