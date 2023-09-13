@@ -21,9 +21,14 @@ export const getKdm = async () => {
   }
 };
 
-export const updateKdm = async ({ id, name, timeStart, timeEnd }) => {
+export const updateKdm = async ({ id, name, timeStart, timeEnd, hall }) => {
   try {
-    const res = await axios.put(`/kdm/${id}`, { name, timeStart, timeEnd });
+    const res = await axios.put(`/kdm/${id}`, {
+      name,
+      timeStart,
+      timeEnd,
+      hall,
+    });
     return res.data;
   } catch (error) {
     console.log(error.message);

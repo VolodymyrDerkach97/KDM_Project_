@@ -64,6 +64,7 @@ const KdmModal = ({ onClose, type, kdmData = "" }) => {
   const nameInputId = nanoid();
   const timeStartInputId = nanoid();
   const timeEndInputId = nanoid();
+  const HallInputId = nanoid();
 
   let textButton = "";
   switch (type) {
@@ -120,9 +121,9 @@ const KdmModal = ({ onClose, type, kdmData = "" }) => {
             />
           </InputWrapper>
           <InputWrapper>
-            <label htmlFor={nameInputId}>Зали</label>
+            <label htmlFor={HallInputId}>Зали</label>
             <InputStyled
-              id={nameInputId}
+              id={HallInputId}
               type="text"
               value={hall}
               onChange={({ target: { value } }) => setHall(value)}
