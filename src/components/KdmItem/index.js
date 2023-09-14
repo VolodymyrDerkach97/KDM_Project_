@@ -1,1 +1,1 @@
-export { default } from './KdmItem';
+export * from "./KdmItem";

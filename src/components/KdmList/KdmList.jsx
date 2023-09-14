@@ -1,7 +1,7 @@
-import KdmItem from "components/KdmItem";
+import { KdmItem } from "components/KdmItem";
 import { WrapperList } from "./KdmList.styled";
 
-const KdmList = ({ list }) => {
+export const KdmList = ({ list }) => {
   return (
     <WrapperList>
       {list.map((kdm) => (

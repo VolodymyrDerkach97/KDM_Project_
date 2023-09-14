@@ -1,8 +1,8 @@
 import { useState } from "react";
 import KdmList from "../KdmList/KdmList";
-import KdmModal from "../KdmModal/KdmModal";
-import LoginModal from "components/LoginModal";
-import AppBar from "components/AppBar";
+import { KdmModal, AuthModal } from "components/Modal";
+
+import { AppBar } from "components/AppBar";
 
 import { useFilter } from "hooks";
 import { MainStyled } from "./App.styled";
@@ -33,7 +33,7 @@ export const App = () => {
       <AppBar togleModal={togleModal} setFilter={setFilter} />
 
       {showModal && <KdmModal onClose={togleModal} type={"add"} />}
-      {showLoginModal && <LoginModal onClose={togleModal} />}
+      {showLoginModal && <AuthModal onClose={togleModal} />}
 
       <KdmList list={list} />
     </MainStyled>

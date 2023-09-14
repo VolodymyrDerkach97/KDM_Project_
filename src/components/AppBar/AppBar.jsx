@@ -4,9 +4,9 @@ import {
   ListControllWrapper,
   TitleStyled,
 } from "./AppBar.styled";
-import Button from "components/Button";
+import { Button } from "components/Button";
 
-const AppBar = ({ togleModal, setFilter }) => {
+export const AppBar = ({ togleModal, setFilter }) => {
   return (
     <>
       <HeaderStyled>
@@ -26,5 +26,3 @@ const AppBar = ({ togleModal, setFilter }) => {
     </>
   );
 };
-
-export default AppBar;

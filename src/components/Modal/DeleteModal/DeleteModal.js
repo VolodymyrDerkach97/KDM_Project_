@@ -1,14 +1,14 @@
-import PropTypes from 'prop-types';
-import { useEffect } from 'react';
+import PropTypes from "prop-types";
+import { useEffect } from "react";
 
-import { createPortal } from 'react-dom';
+import { createPortal } from "react-dom";
 
-import { ModalStyled, Overlay } from './DeleteModal.styled';
-import { useKdm } from 'hooks/useKdm';
+import { ModalStyled, Overlay } from "./DeleteModal.styled";
+import { useKdm } from "hooks/useKdm";
 
-const portalModal = document.querySelector('#modal-root');
+const portalModal = document.querySelector("#modal-root");
 
-const DeleteModal = ({ onClose, id }) => {
+export const DeleteModal = ({ onClose, id }) => {
   const { remove } = useKdm();
 
   const onDelete = async () => {
@@ -16,20 +16,20 @@ const DeleteModal = ({ onClose, id }) => {
     onClose();
   };
 
-  const onCloseOverlay = e => {
+  const onCloseOverlay = (e) => {
     if (e.currentTarget === e.target) {
       onClose();
     }
   };
 
   useEffect(() => {
-    const onCloseKey = e => {
-      if (e.code === 'Escape') {
+    const onCloseKey = (e) => {
+      if (e.code === "Escape") {
         onClose();
       }
     };
-    window.addEventListener('keydown', onCloseKey);
-    return () => window.removeEventListener('keydown', onCloseKey);
+    window.addEventListener("keydown", onCloseKey);
+    return () => window.removeEventListener("keydown", onCloseKey);
   }, [onClose]);
 
   return createPortal(
@@ -42,8 +42,6 @@ const DeleteModal = ({ onClose, id }) => {
     portalModal
   );
 };
-
-export default DeleteModal;
 
 DeleteModal.propTypes = {
   onClose: PropTypes.func,

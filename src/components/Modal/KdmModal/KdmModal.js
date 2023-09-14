@@ -14,7 +14,7 @@ import { useKdm } from "hooks/useKdm";
 
 const portalModal = document.querySelector("#modal-root");
 
-const KdmModal = ({ onClose, type, kdmData = "" }) => {
+export const KdmModal = ({ onClose, type, kdmData = "" }) => {
   const [name, setName] = useState(kdmData.name || "");
   const [timeStart, setTimeStart] = useState(kdmData.timeStart || "");
   const [timeEnd, setTimeEnd] = useState(kdmData.timeEnd || "");
@@ -139,8 +139,6 @@ const KdmModal = ({ onClose, type, kdmData = "" }) => {
     portalModal
   );
 };
-
-export default KdmModal;
 
 KdmModal.propTypes = {
   onClose: PropTypes.func,

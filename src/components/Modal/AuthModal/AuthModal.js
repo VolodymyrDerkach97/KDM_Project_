@@ -7,14 +7,14 @@ import {
   ModalStyled,
   InputWrapper,
   InputStyled,
-} from "./LoginModal.styled";
+} from "./AuthModal.styled";
 import { nanoid } from "nanoid";
 
 import { useKdm } from "hooks/useKdm";
 
 const portalModal = document.querySelector("#modal-root");
 
-const LoginModal = ({ onClose }) => {
+export const AuthModal = ({ onClose }) => {
   const [email, setEmail] = useState("");
 
   const [password, setPassword] = useState("");
@@ -88,8 +88,6 @@ const LoginModal = ({ onClose }) => {
   );
 };
 
-export default LoginModal;
-
-LoginModal.propTypes = {
+AuthModal.propTypes = {
   onClose: PropTypes.func,
 };

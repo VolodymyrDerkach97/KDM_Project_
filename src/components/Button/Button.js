@@ -2,7 +2,7 @@ import { useKdm } from "hooks/useKdm";
 import { ButtonRedStyled, ButtonStyled } from "./Button.styled";
 import { filterStatus } from "utils";
 
-const Button = ({ text, type, togleModal, setFilter }) => {
+export const Button = ({ text, type, togleModal, setFilter }) => {
   const { onLogout } = useKdm();
 
   let buttonFinal;
@@ -47,5 +47,3 @@ const Button = ({ text, type, togleModal, setFilter }) => {
   }
   return <>{buttonFinal}</>;
 };
-
-export default Button;

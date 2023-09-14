@@ -1,5 +1,4 @@
-import DeleteModal from "components/DeleteModal/DeleteModal";
-import KdmModal from "components/KdmModal/KdmModal";
+import { KdmModal, DeleteModal } from "../Modal";
 
 import { useState } from "react";
 import { daysRemaining, formatDate } from "utils";
@@ -16,7 +15,7 @@ import {
 import { IoIosNotifications } from "react-icons/io";
 import { useKdm } from "hooks/useKdm";
 
-const KdmItem = (kdmData) => {
+export const KdmItem = (kdmData) => {
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const { inAuth } = useKdm();
@@ -79,5 +78,3 @@ const KdmItem = (kdmData) => {
     </WrapperItem>
   );
 };
-
-export default KdmItem;
