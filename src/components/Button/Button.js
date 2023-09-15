@@ -2,7 +2,15 @@ import { useKdm } from "hooks/useKdm";
 import { ButtonRedStyled, ButtonStyled } from "./Button.styled";
 import { filterStatus } from "utils";
 
-export const Button = ({ text, type, togleModal, setFilter }) => {
+export const Button = ({
+  text,
+  type,
+  togleModal,
+  setFilter,
+  onDelete,
+  onClose,
+  setShowModal,
+}) => {
   const { onLogout } = useKdm();
 
   let buttonFinal;
@@ -23,6 +31,38 @@ export const Button = ({ text, type, togleModal, setFilter }) => {
         <ButtonStyled onClick={() => togleModal("kdm")}>
           + Новий ключ
         </ButtonStyled>
+      );
+      break;
+    case "update":
+      buttonFinal = (
+        <ButtonStyled
+          onClick={() => {
+            setShowModal((prev) => !prev);
+          }}
+        >
+          Змінити
+        </ButtonStyled>
+      );
+      break;
+    case "delete":
+      buttonFinal = (
+        <ButtonRedStyled
+          onClick={() => {
+            setShowModal((prev) => !prev);
+          }}
+        >
+          Видалити
+        </ButtonRedStyled>
+      );
+      break;
+
+    case "deleteYes":
+      buttonFinal = <ButtonStyled onClick={() => onDelete()}>Так</ButtonStyled>;
+      break;
+
+    case "deleteNo":
+      buttonFinal = (
+        <ButtonRedStyled onClick={() => onClose()}>Ні</ButtonRedStyled>
       );
       break;
 

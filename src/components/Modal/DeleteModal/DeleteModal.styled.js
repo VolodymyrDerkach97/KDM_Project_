@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 export const Overlay = styled.div`
   position: fixed;
@@ -14,10 +14,18 @@ export const Overlay = styled.div`
 `;
 
 export const ModalStyled = styled.div`
-  width: 300px;
-  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  /* gap: 30px; */
+
+  width: 200px;
+  padding: 20px;
+
+  text-align: center;
+
   border-radius: 10px;
-  background-color: #f7f9d5;
+  background-color: ${(props) => props.theme.colors.bgModalColor};
+  /* background-color: #f7f9d5; */
   max-width: calc(100vw - 48px);
   max-height: calc(100vh - 24px);
   position: relative;

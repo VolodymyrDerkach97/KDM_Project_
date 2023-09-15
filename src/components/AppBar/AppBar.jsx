@@ -1,3 +1,4 @@
+import { useKdm } from "hooks";
 import {
   ButtonWrapper,
   HeaderStyled,
@@ -7,13 +8,17 @@ import {
 import { Button } from "components/Button";
 
 export const AppBar = ({ togleModal, setFilter }) => {
+  const { inAuth } = useKdm();
   return (
     <>
       <HeaderStyled>
         <TitleStyled>KDM Monitor</TitleStyled>
         <ButtonWrapper>
-          <Button type={"login"} togleModal={togleModal} />
-          <Button type={"logout"} />
+          {inAuth ? (
+            <Button type={"logout"} />
+          ) : (
+            <Button type={"login"} togleModal={togleModal} />
+          )}
         </ButtonWrapper>
       </HeaderStyled>
       <ListControllWrapper>

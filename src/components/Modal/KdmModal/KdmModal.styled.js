@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
-import ReactInputMask from 'react-input-mask';
+import styled from "@emotion/styled";
+import ReactInputMask from "react-input-mask";
 
 export const Overlay = styled.div`
   position: fixed;
@@ -18,7 +18,8 @@ export const ModalStyled = styled.div`
   width: 300px;
   padding: 10px;
   border-radius: 10px;
-  background-color: #f7f9d5;
+  background-color: ${(props) => props.theme.colors.bgModalColor};
+  /* background-color: #f7f9d5; */
   max-width: calc(100vw - 48px);
   max-height: calc(100vh - 24px);
   position: relative;

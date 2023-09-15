@@ -16,7 +16,6 @@ const portalModal = document.querySelector("#modal-root");
 
 export const AuthModal = ({ onClose }) => {
   const [email, setEmail] = useState("");
-
   const [password, setPassword] = useState("");
 
   const { onLogin } = useKdm();

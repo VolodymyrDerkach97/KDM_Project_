@@ -2,7 +2,12 @@ import styled from "@emotion/styled";
 
 export const WrapperItem = styled.div`
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
   padding: 10px;
+
   min-height: 100px;
   min-width: 350px;
 
@@ -15,6 +20,7 @@ export const WrapperItem = styled.div`
 
   font-size: 18px;
 `;
+export const WrapperInfo = styled.div``;
 
 export const Name = styled.p`
   font-size: 20px;

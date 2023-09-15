@@ -4,16 +4,17 @@ import { useState } from "react";
 import { daysRemaining, formatDate } from "utils";
 
 import {
-  Button,
   Name,
   UpdateDate,
   WrapperButton,
   WrapperFooter,
+  WrapperInfo,
   WrapperItem,
 } from "./KdmItem.styled";
 
 import { IoIosNotifications } from "react-icons/io";
 import { useKdm } from "hooks/useKdm";
+import { Button } from "components/Button";
 
 export const KdmItem = (kdmData) => {
   const [showModal, setShowModal] = useState(false);
@@ -31,27 +32,17 @@ export const KdmItem = (kdmData) => {
 
   return (
     <WrapperItem>
-      <Name>{kdmData.name}</Name>
-      <p>Початок ключа: {kdmData.timeStart}</p>
-      <p>Кінець ключа: {kdmData.timeEnd}</p>
-      <p>Зали: {kdmData.hall}</p>
+      <WrapperInfo>
+        <Name>{kdmData.name}</Name>
+        <p>Початок ключа: {kdmData.timeStart}</p>
+        <p>Кінець ключа: {kdmData.timeEnd}</p>
+        <p>Зали: {kdmData.hall}</p>
+      </WrapperInfo>
       <WrapperFooter>
         {inAuth ? (
           <WrapperButton>
-            <Button
-              onClick={() => {
-                setShowModal((prev) => !prev);
-              }}
-            >
-              Змінити
-            </Button>
-            <Button
-              onClick={() => {
-                setShowDeleteModal((prev) => !prev);
-              }}
-            >
-              Видалити
-            </Button>
+            <Button type={"update"} setShowModal={setShowModal} />
+            <Button type={"delete"} setShowModal={setShowDeleteModal} />
           </WrapperButton>
         ) : (
           ""

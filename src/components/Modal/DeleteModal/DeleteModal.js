@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 
 import { ModalStyled, Overlay } from "./DeleteModal.styled";
 import { useKdm } from "hooks/useKdm";
+import { Button } from "components/Button";
 
 const portalModal = document.querySelector("#modal-root");
 
@@ -35,8 +36,8 @@ export const DeleteModal = ({ onClose, id }) => {
   return createPortal(
     <Overlay onClick={onCloseOverlay}>
       <ModalStyled>
-        <button onClick={() => onDelete()}>Так</button>
-        <button onClick={() => onClose()}>Ні</button>
+        <Button type={"deleteYes"} onDelete={onDelete} />
+        <Button type={"deleteNo"} onClose={onClose} />
       </ModalStyled>
     </Overlay>,
     portalModal
