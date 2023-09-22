@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem(
   "token"
 )}`;
@@ -17,10 +18,19 @@ export const login = async (data) => {
   try {
     const res = await axios.post("/auth/login", data);
     setToken(res.data.token);
-    console.log(res.data);
-    return res.data;
+    return res;
   } catch (error) {
-    console.log(error.message);
+    switch (error.response.status) {
+      case 401:
+        toast.error("Невірний логін або пароль");
+        break;
+      case 400:
+        toast.error("Невірний формат логіна або пароля");
+        break;
+
+      default:
+        break;
+    }
   }
 };
 
@@ -31,6 +41,13 @@ export const logout = async () => {
 
     return res;
   } catch (error) {
-    console.log(error.message);
+    switch (error.response.status) {
+      case 500:
+        toast.error("Помилка сервера. Спробуйте пізніше");
+        break;
+
+      default:
+        break;
+    }
   }
 };

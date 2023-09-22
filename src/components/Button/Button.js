@@ -10,6 +10,7 @@ export const Button = ({
   onDelete,
   onClose,
   setShowModal,
+  activeFilter,
 }) => {
   const { onLogout } = useKdm();
 
@@ -68,7 +69,11 @@ export const Button = ({
 
     case "filterAll":
       buttonFinal = (
-        <ButtonStyled onClick={() => setFilter(filterStatus.all)}>
+        <ButtonStyled
+          onClick={() => {
+            setFilter(filterStatus.all);
+          }}
+        >
           Всі
         </ButtonStyled>
       );

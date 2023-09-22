@@ -90,7 +90,7 @@ export const KdmModal = ({ onClose, type, kdmData = "" }) => {
               value={name}
               onChange={({ target: { value } }) => setName(value)}
               name="name"
-              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+              title="Назва фільму для якого призначений ключ"
               required
             />
           </InputWrapper>
@@ -128,7 +128,7 @@ export const KdmModal = ({ onClose, type, kdmData = "" }) => {
               value={hall}
               onChange={({ target: { value } }) => setHall(value)}
               name="hall"
-              title="Hall"
+              title="Зали для яких підходить ключ"
               required
             />
           </InputWrapper>

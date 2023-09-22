@@ -1,13 +1,8 @@
 import { useKdm } from "hooks";
-import {
-  ButtonWrapper,
-  HeaderStyled,
-  ListControllWrapper,
-  TitleStyled,
-} from "./AppBar.styled";
+import { ButtonWrapper, HeaderStyled, TitleStyled } from "./AppBar.styled";
 import { Button } from "components/Button";
 
-export const AppBar = ({ togleModal, setFilter }) => {
+export const AppBar = ({ togleModal, setFilter, activeFilter }) => {
   const { inAuth } = useKdm();
   return (
     <>
@@ -21,13 +16,6 @@ export const AppBar = ({ togleModal, setFilter }) => {
           )}
         </ButtonWrapper>
       </HeaderStyled>
-      <ListControllWrapper>
-        <Button type={"add"} togleModal={togleModal} />
-        <ButtonWrapper>
-          <Button type={"filterAll"} setFilter={setFilter} />
-          <Button type={"filterDedline"} setFilter={setFilter} />
-        </ButtonWrapper>
-      </ListControllWrapper>
     </>
   );
 };

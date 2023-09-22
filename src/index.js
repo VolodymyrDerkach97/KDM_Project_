@@ -5,9 +5,10 @@ import "./index.css";
 import { KdmProvider } from "hooks/useKdm";
 import { ThemeProvider } from "@emotion/react";
 
-const theme = {
+export const theme = {
   colors: {
     bgModalColor: "#EBD8FF",
+    primaryColor: "#007bff",
   },
 };
 ReactDOM.createRoot(document.getElementById("root")).render(

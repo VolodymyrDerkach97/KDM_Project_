@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { login, logout } from "service/authApi";
 import { addKdm, getKdm, removeKdm, updateKdm } from "service/kdmApi";
 import { currentUser } from "service/userApi";
-
+import { toast } from "react-toastify";
 const KdmContext = createContext();
 
 export const useKdm = () => useContext(KdmContext);
@@ -24,7 +24,6 @@ export const KdmProvider = ({ children }) => {
       const res = await currentUser();
 
       if (!res || res.status !== 200) {
-        console.log("NO LOGIN USER");
         setInAuth(false);
         return;
       }
@@ -35,56 +34,86 @@ export const KdmProvider = ({ children }) => {
   useEffect(() => {
     const refreshKdm = async () => {
       const res = await getKdm();
-      setListKdm(res.data);
+      toast.success("Список ключів отримано");
+      setListKdm(res.data.data);
     };
     refreshKdm();
   }, []);
 
   const onLogin = async (data) => {
     const res = await login(data);
-    // const res = await login({ email: "kdm@gmail.com", password: "kdm123321" });
+
     if (!res) {
-      console.error("Error login");
-      return;
-    }
-    if (res.code !== 200) {
-      console.error("NO LOGIN");
       setInAuth(false);
       return;
     }
+    if (res.status === 200) {
+      toast.success("Ви успішно увійшли");
+    }
+
+    // const res = await login({ email: "kdm@gmail.com", password: "kdm123321" });
 
     setInAuth(true);
   };
   const onLogout = async () => {
     const res = await logout();
 
-    if (res.status !== 204 || "") {
-      console.log("NO LOGOUT");
+    if (!res) {
+      setInAuth(true);
       return;
     }
-
-    setInAuth(false);
+    if (res.status === 204) {
+      toast.success("Ви успішно вийшли із системи");
+      setInAuth(false);
+      return;
+    } else {
+      toast.error("Ви не вийшли із системи");
+    }
   };
 
   const add = async (data) => {
     const res = await addKdm(data);
-    setListKdm(res.data);
+    if (!res) {
+      return;
+    }
+    if (res.status === 201) {
+      toast.success("Ключ створено");
+      setListKdm(res.data.data);
+    }
   };
 
   const get = async () => {
     const res = await getKdm();
-    setListKdm(res.data);
+    if (!res) {
+      return;
+    }
+    if (res.status === 200) {
+      toast.success("Список ключів отримано");
+      setListKdm(res.data.data);
+    }
   };
 
   const update = async (data) => {
     const res = await updateKdm(data);
-    setListKdm(res.data);
+
+    if (!res) {
+      return;
+    }
+    if (res.status === 200) {
+      toast.success("Ключ оновлено");
+      setListKdm(res.data.data);
+    }
   };
 
   const remove = async (id) => {
     const res = await removeKdm(id);
-    console.log("remove", res);
-    setListKdm(res.data);
+    if (!res) {
+      return;
+    }
+    if (res.status === 200) {
+      toast.success("Ключ видалено");
+      setListKdm(res.data.data);
+    }
   };
 
   return (

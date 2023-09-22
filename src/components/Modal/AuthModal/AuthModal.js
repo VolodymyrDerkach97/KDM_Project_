@@ -23,6 +23,7 @@ export const AuthModal = ({ onClose }) => {
   const onSubmitLogin = async (e) => {
     e.preventDefault();
     await onLogin({ email, password });
+
     reset();
     onClose("login");
   };

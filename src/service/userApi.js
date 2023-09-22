@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const currentUser = async () => {
   try {
@@ -6,6 +7,15 @@ export const currentUser = async () => {
 
     return res;
   } catch (error) {
-    console.log(error.message);
+    switch (error.response.status) {
+      case 401:
+        toast.info("Щоб вносити зміни потрібно авторизуватись", {
+          autoClose: 5000,
+        });
+        break;
+
+      default:
+        break;
+    }
   }
 };

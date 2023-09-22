@@ -4,7 +4,7 @@ export const ButtonStyled = styled.button`
   padding: 8px 16px;
   margin-right: 8px;
   border: none;
-  border: 1px solid #007bff;
+  border: 1px solid ${(props) => props.theme.colors.primaryColor};
 
   border-radius: 6px;
   cursor: pointer;
@@ -14,7 +14,8 @@ export const ButtonStyled = styled.button`
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 
   &:hover {
-    background-color: #007bff; /* Змінюємо колір при наведенні */
+    background-color: ${(props) =>
+      props.theme.colors.primaryColor}; /* Змінюємо колір при наведенні */
     color: #fff;
   }
 `;
