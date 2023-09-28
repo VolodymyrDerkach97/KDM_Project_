@@ -1,7 +1,12 @@
-import { KdmModal, DeleteModal } from "../Modal";
+import PropTypes from "prop-types";
 
 import { useState } from "react";
+
+import { useKdm } from "hooks/useKdm";
 import { daysRemaining, formatDate } from "utils";
+
+import { KdmModal, DeleteModal } from "../Modal";
+import { Button } from "components/Button";
 
 import {
   Name,
@@ -13,8 +18,6 @@ import {
 } from "./KdmItem.styled";
 
 import { IoIosNotifications } from "react-icons/io";
-import { useKdm } from "hooks/useKdm";
-import { Button } from "components/Button";
 
 export const KdmItem = (kdmData) => {
   const [showModal, setShowModal] = useState(false);
@@ -68,4 +71,16 @@ export const KdmItem = (kdmData) => {
       )}
     </WrapperItem>
   );
+};
+
+KdmItem.propTypes = {
+  kdmData: PropTypes.exact({
+    createdAt: PropTypes.string.isRequired,
+    hall: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    timeEnd: PropTypes.string.isRequired,
+    timeStart: PropTypes.string.isRequired,
+    updatedAt: PropTypes.string.isRequired,
+    _id: PropTypes.string.isRequired,
+  }),
 };

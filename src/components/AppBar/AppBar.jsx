@@ -1,8 +1,12 @@
+import PropTypes from "prop-types";
+
 import { useKdm } from "hooks";
-import { ButtonWrapper, HeaderStyled, TitleStyled } from "./AppBar.styled";
+
 import { Button } from "components/Button";
 
-export const AppBar = ({ togleModal, setFilter, activeFilter }) => {
+import { ButtonWrapper, HeaderStyled, TitleStyled } from "./AppBar.styled";
+
+export const AppBar = ({ togleModal }) => {
   const { inAuth } = useKdm();
   return (
     <>
@@ -18,4 +22,8 @@ export const AppBar = ({ togleModal, setFilter, activeFilter }) => {
       </HeaderStyled>
     </>
   );
+};
+
+AppBar.propTypes = {
+  togleModal: PropTypes.func,
 };

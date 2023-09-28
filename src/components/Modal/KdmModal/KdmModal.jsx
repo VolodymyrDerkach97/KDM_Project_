@@ -11,6 +11,7 @@ import {
 import { nanoid } from "nanoid";
 
 import { useKdm } from "hooks/useKdm";
+import { Button } from "components/Button";
 
 const portalModal = document.querySelector("#modal-root");
 
@@ -132,7 +133,7 @@ export const KdmModal = ({ onClose, type, kdmData = "" }) => {
               required
             />
           </InputWrapper>
-          <button type="submit">{textButton}</button>
+          <Button type={"submit"} textButton={textButton} />
         </form>
       </ModalStyled>
     </Overlay>,
@@ -142,4 +143,14 @@ export const KdmModal = ({ onClose, type, kdmData = "" }) => {
 
 KdmModal.propTypes = {
   onClose: PropTypes.func,
+  type: PropTypes.string,
+  kdmData: PropTypes.exact({
+    createdAt: PropTypes.string.isRequired,
+    hall: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    timeEnd: PropTypes.string.isRequired,
+    timeStart: PropTypes.string.isRequired,
+    updatedAt: PropTypes.string.isRequired,
+    _id: PropTypes.string.isRequired,
+  }),
 };

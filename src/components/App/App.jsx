@@ -1,11 +1,11 @@
 import { useState } from "react";
 
+import { useFilter } from "hooks";
+
 import KdmList from "../KdmList/KdmList";
 import { KdmModal, AuthModal } from "components/Modal";
 import { AppBar } from "components/AppBar";
 import { Button } from "components/Button";
-
-import { useFilter } from "hooks";
 
 import { MainStyled, ButtonWrapper, ListControllWrapper } from "./App.styled";
 
@@ -17,7 +17,7 @@ export const App = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [filter, setFilter] = useState("all");
 
-  const { list, activeFilter } = useFilter(filter);
+  const { list } = useFilter(filter);
 
   const togleModal = (type) => {
     switch (type) {
@@ -35,25 +35,13 @@ export const App = () => {
 
   return (
     <>
-      <AppBar
-        togleModal={togleModal}
-        setFilter={setFilter}
-        activeFilter={activeFilter}
-      />
+      <AppBar togleModal={togleModal} setFilter={setFilter} />
       <MainStyled>
         <ListControllWrapper>
           <Button type={"add"} togleModal={togleModal} />
           <ButtonWrapper>
-            <Button
-              type={"filterAll"}
-              setFilter={setFilter}
-              activeFilter={activeFilter}
-            />
-            <Button
-              type={"filterDedline"}
-              setFilter={setFilter}
-              activeFilter={activeFilter}
-            />
+            <Button type={"filterAll"} setFilter={setFilter} />
+            <Button type={"filterDedline"} setFilter={setFilter} />
           </ButtonWrapper>
         </ListControllWrapper>
         <KdmList list={list} />

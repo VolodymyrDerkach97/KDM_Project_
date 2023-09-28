@@ -1,16 +1,20 @@
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
 
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+
+import { useKdm } from "hooks/useKdm";
+
+import { Button } from "components/Button";
+
 import {
   Overlay,
   ModalStyled,
   InputWrapper,
   InputStyled,
 } from "./AuthModal.styled";
-import { nanoid } from "nanoid";
 
-import { useKdm } from "hooks/useKdm";
+import { nanoid } from "nanoid";
 
 const portalModal = document.querySelector("#modal-root");
 
@@ -79,8 +83,7 @@ export const AuthModal = ({ onClose }) => {
               required
             />
           </InputWrapper>
-
-          <button type="submit">LOGIN</button>
+          <Button type={"submit"} textButton={"Логін"} />
         </form>
       </ModalStyled>
     </Overlay>,

@@ -6,12 +6,13 @@ export const HeaderStyled = styled.header`
 
   padding: 10px 5px;
 
-  background-color: #1f00ce;
+  background-color: ${(props) => props.theme.colors.bgHeaderColor};
 `;
 
 export const TitleStyled = styled.h1`
-  color: #ce00af;
+  color: white;
 `;
+
 export const ButtonWrapper = styled.div`
   display: flex;
   align-items: center;

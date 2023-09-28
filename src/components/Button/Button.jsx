@@ -1,16 +1,16 @@
+import PropTypes from "prop-types";
 import { useKdm } from "hooks/useKdm";
 import { ButtonRedStyled, ButtonStyled } from "./Button.styled";
 import { filterStatus } from "utils";
 
 export const Button = ({
-  text,
   type,
+  textButton,
   togleModal,
   setFilter,
   onDelete,
   onClose,
   setShowModal,
-  activeFilter,
 }) => {
   const { onLogout } = useKdm();
 
@@ -86,9 +86,21 @@ export const Button = ({
         </ButtonStyled>
       );
       break;
-
+    case "submit":
+      buttonFinal = <ButtonStyled>{textButton}</ButtonStyled>;
+      break;
     default:
       break;
   }
   return <>{buttonFinal}</>;
+};
+
+Button.propTypes = {
+  type: PropTypes.string.isRequired,
+  textButton: PropTypes.string,
+  togleModal: PropTypes.func,
+  setFilter: PropTypes.func,
+  onDelete: PropTypes.func,
+  onClose: PropTypes.func,
+  setShowModal: PropTypes.func,
 };
