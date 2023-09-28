@@ -9,6 +9,7 @@ export const ButtonWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
+  margin-left: auto;
 `;
 export const ListControllWrapper = styled.div`
   display: flex;

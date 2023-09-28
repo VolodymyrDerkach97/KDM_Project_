@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { useFilter } from "hooks";
+import { useFilter, useKdm } from "hooks";
 
 import KdmList from "../KdmList/KdmList";
 import { KdmModal, AuthModal } from "components/Modal";
@@ -16,7 +16,7 @@ export const App = () => {
   const [showModal, setShowModal] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [filter, setFilter] = useState("all");
-
+  const { inAuth } = useKdm();
   const { list } = useFilter(filter);
 
   const togleModal = (type) => {
@@ -38,7 +38,8 @@ export const App = () => {
       <AppBar togleModal={togleModal} setFilter={setFilter} />
       <MainStyled>
         <ListControllWrapper>
-          <Button type={"add"} togleModal={togleModal} />
+          {inAuth ? <Button type={"add"} togleModal={togleModal} /> : ""}
+
           <ButtonWrapper>
             <Button type={"filterAll"} setFilter={setFilter} />
             <Button type={"filterDedline"} setFilter={setFilter} />
