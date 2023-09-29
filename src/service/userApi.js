@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 
 export const currentUser = async () => {
   try {
-    const res = await axios.get("/user/current");
+    const res = await axios.get("/user/currentі");
 
     return res;
   } catch (error) {

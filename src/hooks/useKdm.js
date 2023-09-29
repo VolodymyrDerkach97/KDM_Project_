@@ -21,9 +21,12 @@ export const KdmProvider = ({ children }) => {
 
   useEffect(() => {
     const refreshUser = async () => {
-      const res = await currentUser();
-
-      if (!res || res.status !== 200) {
+      const res = await toast.promise(currentUser, {
+        pending: "Виконується запит на сервер. Це може зайняти деякий час",
+        success: "Список ключів отримано 👌",
+        error: "Помилка сервера :( Спробуйте пізніше 🤯",
+      });
+      if (!res) {
         setInAuth(false);
         return;
       }
@@ -34,7 +37,7 @@ export const KdmProvider = ({ children }) => {
   useEffect(() => {
     const refreshKdm = async () => {
       const res = await getKdm();
-      toast.success("Список ключів отримано");
+
       setListKdm(res.data.data);
     };
     refreshKdm();
@@ -88,7 +91,6 @@ export const KdmProvider = ({ children }) => {
       return;
     }
     if (res.status === 200) {
-      toast.success("Список ключів отримано");
       setListKdm(res.data.data);
     }
   };
