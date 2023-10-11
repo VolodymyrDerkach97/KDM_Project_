@@ -23,7 +23,7 @@ export const App = () => {
   const { list } = useFilter(filter);
 
   const noSleepServer = async () => {
-    await currentUser;
+    await currentUser();
   };
 
   setInterval(() => {
