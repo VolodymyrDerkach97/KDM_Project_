@@ -22,15 +22,15 @@ export const App = () => {
   const { inAuth } = useKdm();
   const { list } = useFilter(filter);
 
-  const noSleepServer = () => {
-    currentUser();
-  };
-  if (inAuth) {
-    setInterval(() => {
-      noSleepServer();
-      console.log("Пан Server! Не спать вафледрон");
-    }, interval);
-  }
+  // const noSleepServer = () => {
+  //   currentUser();
+  // };
+  // if (inAuth) {
+  //   setInterval(() => {
+  //     noSleepServer();
+  //     console.log("Пан Server! Не спать вафледрон");
+  //   }, interval);
+  // }
 
   const togleModal = (type) => {
     switch (type) {
