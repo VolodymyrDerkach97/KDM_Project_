@@ -44,23 +44,22 @@ export const KdmProvider = ({ children }) => {
   }, []);
 
   const onLogin = async (data) => {
-    const res = await login(data);
-
+    const res = await toast.promise(login(data), {
+      pending: "Виконується запит на сервер. Це може зайняти деякий час",
+      success: "Ви успішно увійшли 👌",
+      error: "Помилка сервера :( Спробуйте пізніше 🤯",
+    });
     if (!res) {
       setInAuth(false);
       return;
     }
-    if (res.status === 200) {
-      toast.success("Ви успішно увійшли");
-    }
-
-    // const res = await login({ email: "kdm@gmail.com", password: "kdm123321" });
 
     setInAuth(true);
   };
   const onLogout = async () => {
-    const res = await logout();
-
+    const res = await toast.promise(logout, {
+      pending: "Виконується запит на сервер. Це може зайняти деякий час",
+    });
     if (!res) {
       setInAuth(true);
       return;
@@ -75,12 +74,15 @@ export const KdmProvider = ({ children }) => {
   };
 
   const add = async (data) => {
-    const res = await addKdm(data);
+    const res = await toast.promise(addKdm(data), {
+      pending: "Виконується запит на сервер. Це може зайняти деякий час",
+      success: "Ключ створено 👌",
+      error: "Помилка сервера :( Спробуйте пізніше 🤯",
+    });
     if (!res) {
       return;
     }
     if (res.status === 201) {
-      toast.success("Ключ створено");
       setListKdm(res.data.data);
     }
   };
@@ -96,24 +98,29 @@ export const KdmProvider = ({ children }) => {
   };
 
   const update = async (data) => {
-    const res = await updateKdm(data);
-
+    const res = await toast.promise(updateKdm(data), {
+      pending: "Виконується запит на сервер. Це може зайняти деякий час",
+      success: "Ключ оновлено 👌",
+      error: "Помилка сервера :( Спробуйте пізніше 🤯",
+    });
     if (!res) {
       return;
     }
     if (res.status === 200) {
-      toast.success("Ключ оновлено");
       setListKdm(res.data.data);
     }
   };
 
   const remove = async (id) => {
-    const res = await removeKdm(id);
+    const res = await toast.promise(removeKdm(id), {
+      pending: "Виконується запит на сервер. Це може зайняти деякий час",
+      success: "Ключ видалено 👌",
+      error: "Помилка сервера :( Спробуйте пізніше 🤯",
+    });
     if (!res) {
       return;
     }
     if (res.status === 200) {
-      toast.success("Ключ видалено");
       setListKdm(res.data.data);
     }
   };
