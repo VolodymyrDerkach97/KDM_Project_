@@ -1,7 +1,9 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import { setLSToken } from "./authApi";
 
 export const currentUser = async () => {
+  setLSToken();
   try {
     const res = await axios.get("/user/currentі");
 

@@ -25,11 +25,12 @@ export const App = () => {
   const noSleepServer = () => {
     currentUser();
   };
-
-  setInterval(() => {
-    noSleepServer();
-    console.log("Пан Server! Не спать вафледрон");
-  }, interval);
+  if (inAuth) {
+    setInterval(() => {
+      noSleepServer();
+      console.log("Пан Server! Не спать вафледрон");
+    }, interval);
+  }
 
   const togleModal = (type) => {
     switch (type) {
