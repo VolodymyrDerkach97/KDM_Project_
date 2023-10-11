@@ -13,7 +13,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { currentUser } from "service/userApi";
 
-const minute = 60000;
+const interval = 30000;
 
 export const App = () => {
   const [showModal, setShowModal] = useState(false);
@@ -22,14 +22,14 @@ export const App = () => {
   const { inAuth } = useKdm();
   const { list } = useFilter(filter);
 
-  const noSleepServer = async () => {
-    await currentUser();
+  const noSleepServer = () => {
+    currentUser();
   };
 
   setInterval(() => {
     noSleepServer();
     console.log("Пан Server! Не спать вафледрон");
-  }, minute);
+  }, interval);
 
   const togleModal = (type) => {
     switch (type) {
