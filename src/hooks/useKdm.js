@@ -76,13 +76,15 @@ export const KdmProvider = ({ children }) => {
   const add = async (data) => {
     const res = await toast.promise(addKdm(data), {
       pending: "Виконується запит на сервер. Це може зайняти деякий час",
-      success: "Ключ створено 👌",
+
       error: "Помилка сервера :( Спробуйте пізніше 🤯",
     });
     if (!res) {
       return;
     }
+
     if (res.status === 201) {
+      toast.success("Ключ створено 👌");
       setListKdm(res.data.data);
     }
   };

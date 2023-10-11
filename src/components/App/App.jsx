@@ -11,9 +11,6 @@ import { MainStyled, ButtonWrapper, ListControllWrapper } from "./App.styled";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { currentUser } from "service/userApi";
-
-const interval = 30000;
 
 export const App = () => {
   const [showModal, setShowModal] = useState(false);
@@ -21,16 +18,6 @@ export const App = () => {
   const [filter, setFilter] = useState("all");
   const { inAuth } = useKdm();
   const { list } = useFilter(filter);
-
-  // const noSleepServer = () => {
-  //   currentUser();
-  // };
-  // if (inAuth) {
-  //   setInterval(() => {
-  //     noSleepServer();
-  //     console.log("Пан Server! Не спать вафледрон");
-  //   }, interval);
-  // }
 
   const togleModal = (type) => {
     switch (type) {
